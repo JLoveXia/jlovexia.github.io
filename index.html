@@ -35,7 +35,8 @@
     .loader-text {
       width: 100%;
       height: 37vh;
-      font-size: 4vw;
+      font-size: 1.6rem;
+      line-height: 2;
       color: rgb(225, 119, 119);;
       position: absolute;
       top: 0;
@@ -45,6 +46,7 @@
       margin: auto;
     }
 
+    .loader-notice,
     .loader-enter {
       width: 15vw;
       height: 4vw;
@@ -59,6 +61,11 @@
       user-select: none;
       -webkit-user-select: none;
       cursor: pointer;
+    }
+
+    .loader-notice {
+      display: none;
+      cursor: not-allowed;
     }
 
     @keyframes breath {
@@ -300,6 +307,11 @@
       .clock-col:after {
         display: none !important;
       }
+    } 
+    @media (max-width: 900px)  {
+      .loader-notice {display: block;}
+      .swiper-container,
+      .loader-enter {display: none;}
     }
   </style>
   <style>
@@ -319,18 +331,16 @@
     }
     #story {
       border: 2.14vw solid rgb(225, 119, 119);
-      border-top-width: 2vh;
-      border-bottom-width: 2vh;
       padding: 1vh 1vw;
       height: 94vh;
     }
     .story-text {
-      font-size: 1.3vw;
-      line-height: 2.6vw;
+      font-size: 1.3rem;
+      line-height: 2.6rem;
     }
     .story-text.abstract {
-      font-size: 1vw;
-      line-height: 2vw;
+      font-size: 1.1rem;
+      line-height: 2.2rem;
     }
     #flamingo-card {
       color: #444444;
@@ -354,6 +364,7 @@
       <div class="loader-enter">
         让我看看
       </div>
+      <div class="loader-notice">在 PC 端访问</div>
     </div>
   </div>
   <!-- bg -->
@@ -367,10 +378,9 @@
     <div class="half-container left">
       <div id="story">
         <div class="story-text abstract">
-          TO 亲爱的小蝦姐/囡囡
-          <br>我们的恋情可能没那么惊天动地，或许存在一些大大小小的摩擦，但我要感谢一直以来你的包容和支持。自从我们相恋之后，我一直想做一个关于我们 ❤ 故事的与众不同的小小记录。
-          <br>
-          <p style="text-align: center;">
+          TO 亲爱的小蝦姐/囡囡：
+          <br>　　我们的恋情可能没那么惊天动地，或许有时存在一些大大小小的摩擦，但感谢一直以来你的包容和支持。自从我们相恋之后，我一直想做一个关于我们 ❤ 故事的与众不同的小小记录。
+          <p style="text-align: center;font-size: smaller;">
             <br>爱情是什么？
             <br>或许至情至圣的人能明白
             <br>但，现在我还不懂
