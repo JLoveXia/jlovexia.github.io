@@ -37,7 +37,8 @@
       height: 37vh;
       font-size: 1.6rem;
       line-height: 2;
-      color: rgb(225, 119, 119);;
+      color: rgb(225, 119, 119);
+      ;
       position: absolute;
       top: 0;
       left: 0;
@@ -102,6 +103,7 @@
       height: 100%;
       display: flex;
       display: -webkit-flex;
+      display: none;
     }
 
     .flip-in-text {
@@ -176,6 +178,7 @@
       transform: rotate(-8deg);
       z-index: 100;
     }
+
     .m-picture.pic2 {
       top: 7%;
       left: 7%;
@@ -183,24 +186,28 @@
       z-index: 20;
       z-index: 40;
     }
+
     .m-picture.pic3 {
       top: 64%;
       left: 7%;
       transform: rotate(-10deg);
       z-index: 70;
     }
+
     .m-picture.pic4 {
       top: 30%;
       left: 35%;
       transform: rotate(3deg);
       z-index: 80;
     }
+
     .m-picture.pic5 {
       top: 6%;
       left: 67%;
       transform: rotate(10deg);
       z-index: 80;
     }
+
     .m-picture.pic6 {
       top: 50%;
       left: 63%;
@@ -307,11 +314,17 @@
       .clock-col:after {
         display: none !important;
       }
-    } 
-    @media (max-width: 900px)  {
-      .loader-notice {display: block;}
+    }
+
+    @media (max-width: 900px) {
+      .loader-notice {
+        display: block;
+      }
+
       .swiper-container,
-      .loader-enter {display: none;}
+      .loader-enter {
+        display: none;
+      }
     }
   </style>
   <style>
@@ -321,29 +334,35 @@
 
     .half-container.left {
       width: 36%;
-      background-color: rgb(225, 119, 119);;
+      background-color: rgb(225, 119, 119);
+      ;
       color: rgb(225, 119, 119);
       background: url(./src/background_white_pattern.jpg) center center;
       opacity: .98;
     }
+
     .half-container.right {
       width: 64%;
       filter: blur(10px);
       -webkit-filter: blur(10px);
     }
+
     #story {
       border: 2.14vw solid rgb(225, 119, 119);
       padding: 1vh 1vw;
       height: 94vh;
     }
+
     .story-text {
       font-size: 1.3rem;
       line-height: 2.6rem;
     }
+
     .story-text.abstract {
       font-size: 1.1rem;
       line-height: 2.2rem;
     }
+
     #flamingo-card {
       color: #444444;
     }
@@ -479,9 +498,12 @@
 
     document.getElementsByClassName('loader-enter')[0].addEventListener('click', () => {
       document.getElementById('loader').style.opacity = 0;
+      let main = document.getElementsByClassName('swiper-container')[0];
+      main.style.display = 'flex';
+      main.style.display = '-webkit-flex';
       setTimeout(() => {
         document.getElementById('loader').style.display = 'none';
-      },1000)
+      }, 1000)
       let bgm = document.getElementById('bgm');
       bgm.volume = 0.1;
       bgm.play();
