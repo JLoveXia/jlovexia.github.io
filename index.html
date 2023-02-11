@@ -1,112 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAPPY VALENTINE :) MY LOVER</title>
-    <style>
-        html, 
-        body, 
-        .swiper-container, 
-        .swiper-slide {
-            width: 100%; height: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
-        body {
-            background-color: brown;
-        }
-        .background {
-            position: absolute;
-            top: -20%;
-            z-index: 0;
-            width: 100%;
-            height: 120%;
-        }
-        .background #viewer {
-            width: 100%;
-            height: 100%;
-        }
-        .swiper-container {
-            position: absolute;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-        }
-        .flip-in-text {
-            background: rgba(255, 255, 255, 0.5);
-            color: black;
-            margin: 1em auto;
-            height: 2em;
-            line-height: 2em;
-            width: 60%;
-        }
-        .m-card {
-          width: 10%;
-          height: fit-content;
-          min-width: 320px;
-          background-color: white;
-          box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.3);
-          border-radius: 10px;
-          overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>情人节快乐 :) 亲爱的囡囡</title>
+  <style>
+    html,
+    body,
+    .swiper-container,
+    .swiper-slide {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
 
-        .m-card .m-card-img,
-        .m-card img {
-          width: 100%;
-        }
+    body {
+      background-color: #fbebde;
+    }
 
-        .m-card-title {
-          display: flex;
-          display: -webkit-flex;
-          flex-direction: column;
-          border-bottom: solid .5px rgba(0, 0, 0, 0.1);
-        }
+    #loader {
+      width: 100%;
+      height: 100%;
+      background: url(./src/background_white_pattern.jpg) repeat;
+      position: fixed;
+      z-index: 99;
+      text-align: center;
+      transition: opacity 1s linear;
+      opacity: 1;
+    }
 
-        .m-card-subtitle {
-          font-size: 0.8rem;
-          color: grey;
-        }
+    .loader-text {
+      width: 100%;
+      height: 37vh;
+      font-size: 4vw;
+      color: rgb(225, 119, 119);;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
 
-        .m-card-box {
-          padding:  .5rem 1rem .5rem 1rem;
-        }
+    .loader-enter {
+      width: 15vw;
+      height: 4vw;
+      line-height: 4vw;
+      background: url(./src/BG_subtitltes_textured.png) center center no-repeat;
+      background-size: contain;
+      font-size: 1.2vw;
+      color: #444444;
+      margin: 5vh auto;
+      animation: breath 2s infinite;
+      -webkit-animation: breath 2s infinite;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: pointer;
+    }
 
-        .m-card-text {
-          line-height: 1.5rem;
-        }
+    @keyframes breath {
+      0% {
+        scale: 1;
+      }
 
-        #flamingo-card {
-          position: fixed;
-          top: 10vh;
-          right: 10vh;
-        }
+      50% {
+        scale: 1.1;
+      }
 
-    </style>
+      100% {
+        scale: 1;
+      }
+    }
+
+    .background {
+      position: absolute;
+      top: -20%;
+      z-index: 0;
+      width: 100%;
+      height: 120%;
+    }
+
+    .background #viewer {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-container {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      display: -webkit-flex;
+    }
+
+    .flip-in-text {
+      background: rgba(255, 255, 255, 0.5);
+      color: black;
+      margin: 1em auto;
+      height: 2em;
+      line-height: 2em;
+      width: 60%;
+    }
+
+    .m-card {
+      width: 10%;
+      height: fit-content;
+      min-width: 320px;
+      background-color: white;
+      box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .m-card .m-card-img,
+    .m-card img {
+      width: 100%;
+    }
+
+    .m-card-title {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      border-bottom: solid .5px rgba(0, 0, 0, 0.1);
+    }
+
+    .m-card-subtitle {
+      font-size: 0.8rem;
+      color: grey;
+    }
+
+    .m-card-box {
+      padding: .5rem 1rem .5rem 1rem;
+    }
+
+    .m-card-text {
+      line-height: 1.5rem;
+    }
+  </style>
+  <style>
+    .m-picture {
+      width: 10%;
+      height: fit-content;
+      min-width: 320px;
+      box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.3);
+      border: 10px solid white;
+      position: absolute;
+      top: 100%;
+      left: 005%;
+    }
+
+    .m-picture .m-picture-box {
+      width: 100%;
+      height: 100%;
+    }
+
+    .m-picture img {
+      display: block;
+      width: 100%;
+    }
+
+    .m-picture.pic1 {
+      top: 6%;
+      left: 35%;
+      transform: rotate(-8deg);
+      z-index: 100;
+    }
+    .m-picture.pic2 {
+      top: 7%;
+      left: 7%;
+      transform: rotate(9deg);
+      z-index: 20;
+      z-index: 40;
+    }
+    .m-picture.pic3 {
+      top: 64%;
+      left: 7%;
+      transform: rotate(-10deg);
+      z-index: 70;
+    }
+    .m-picture.pic4 {
+      top: 30%;
+      left: 35%;
+      transform: rotate(3deg);
+      z-index: 80;
+    }
+    .m-picture.pic5 {
+      top: 6%;
+      left: 67%;
+      transform: rotate(10deg);
+      z-index: 80;
+    }
+    .m-picture.pic6 {
+      top: 50%;
+      left: 63%;
+      transform: rotate(-8deg);
+      z-index: 90;
+    }
+  </style>
+  <style>
+    .clock-day:before {
+      content: var(--timer-day);
+    }
+
+    .clock-hours:before {
+      content: var(--timer-hours);
+    }
+
+    .clock-minutes:before {
+      content: var(--timer-minutes);
+    }
+
+    .clock-seconds:before {
+      content: var(--timer-seconds);
+    }
+
+    body {
+      background: linear-gradient(45deg, #1870ed 0, #f18f88 100%);
+      font-family: 'Montserrat', 'sans-serif';
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clock-container {
+      width: fit-content;
+      height: fit-content;
+      min-width: 320px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      background-color: rgb(255, 148, 148);
+      border-radius: 5px;
+      padding: 8px 8px;
+      box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.15), 0 15px 30px 5px rgba(0, 0, 0, 0.25);
+      display: flex;
+    }
+
+    .clock-col {
+      text-align: center;
+      margin-right: 1vw;
+      margin-left: 1vw;
+      min-width: 5vw;
+      position: relative;
+    }
+
+    .clock-col:not(:last-child):before,
+    .clock-col:not(:last-child):after {
+      content: "";
+      background-color: rgba(255, 255, 255, 0.3);
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      display: block;
+      position: absolute;
+      right: -1.4vw;
+    }
+
+    .clock-col:not(:last-child):before {
+      top: 30%;
+    }
+
+    .clock-col:not(:last-child):after {
+      top: 47%;
+    }
+
+    .clock-timer {
+      margin: 2px 0;
+    }
+
+    .clock-timer:before {
+      color: #fff;
+      font-size: 3vw;
+      text-transform: uppercase;
+    }
+
+    .clock-label {
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      font-size: .7rem;
+      margin-top: 3px;
+    }
+
+    @media (max-width: 825px) {
+      .clock-container {
+        flex-direction: column;
+        padding-top: 40px;
+        padding-bottom: 40px;
+      }
+
+      .clock-col+.clock-col {
+        margin-top: 20px;
+      }
+
+      .clock-col:before,
+      .clock-col:after {
+        display: none !important;
+      }
+    }
+  </style>
+  <style>
+    .half-container {
+      position: relative;
+    }
+
+    .half-container.left {
+      width: 36%;
+      background-color: rgb(225, 119, 119);;
+      color: rgb(225, 119, 119);
+      background: url(./src/background_white_pattern.jpg) center center;
+      opacity: .98;
+    }
+    .half-container.right {
+      width: 64%;
+    }
+    #story {
+      border: 2.14vw solid rgb(225, 119, 119);
+      border-top-width: 2vh;
+      border-bottom-width: 2vh;
+      padding: 1vh 1vw;
+      height: 94vh;
+    }
+    .story-text {
+      font-size: 1.3vw;
+      line-height: 2.6vw;
+    }
+    .story-text.abstract {
+      font-size: 1vw;
+      line-height: 2vw;
+    }
+    #flamingo-card {
+      color: #444444;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="background">
-        <iframe id="viewer" name="viewer" allow="fullscreen; xr-spatial-tracking;" src="webgl_gpgpu_birds_gltf.html" style="display: unset;"></iframe>
-    </div>
-    <div class="swiper-container">
-      <div class="m-card" id="flamingo-card">
-        <div class="m-card-img">
-          <img src="./src/flamingo.jpg" />
-        </div>
-        <div class="m-card-box m-card-title">
-          <div class="m-card-text">
-            火烈鸟
-          </div>
-          <div class="m-card-text m-card-subtitle">
-            Flamingo
-          </div>
-        </div>
-        <div class="m-card-box m-card-text m-card-cont">
-          火烈鸟象征着不灭的意志、张扬的青春。火烈鸟一生只有一个伴侣，所以象征着忠贞、矢志不渝的爱情。不顾一切的去爱，即使是付出自己也无所谓火烈鸟隐喻着自由，厌倦沉闷，不知空乏为何物，肆无忌惮地挥洒青春，爱，优雅的含义。
-        </div>
+  <!-- loader -->
+  <div id="loader">
+    <div class="loader-text">
+      <div>
+        谨以此页<br>
+        献给我亲爱的<br>
+        <span
+          style="font-size: 3vw;background-color: tomato;border-radius: 10px;padding: .5rem 1rem; color: #fbebde;">小蝦姐 /
+          囡囡</span><br>
+        <span style="font-size: 1.5rem;">—— 你的爱人：弗拉基米尔·伊里奇·冏</span>
 
       </div>
+      <div class="loader-enter">
+        让我看看
+      </div>
     </div>
+  </div>
+  <!-- bg -->
+  <div class="background">
+    <iframe id="viewer" name="viewer" allow="fullscreen; xr-spatial-tracking;" src="webgl_gpgpu_birds_gltf.html"
+      style="display: unset;"></iframe>
+  </div>
+  <!-- main -->
+  <div class="swiper-container">
+    <!-- left -->
+    <div class="half-container left">
+      <div id="story">
+        <div class="story-text abstract">
+          TO 亲爱的小蝦姐/囡囡
+          <br>我们的恋情可能没那么惊天动地，或许存在一些大大小小的摩擦，但我要感谢一直以来你的包容和支持。自从我们相恋之后，我一直想做一个关于我们 ❤ 故事的与众不同的小小记录。
+          <br>
+          <p style="text-align: center;">
+            <br>爱情是什么？
+            <br>或许至情至圣的人能明白
+            <br>但，现在我还不懂
+            <br>我不懂，但
+            <br>期盼有朝一日
+            <br>我能话与人知
+          </p>
+        </div>
+
+        <div class="story-text">
+          <br><span id="know-year"></span>年前的九月，我们相识👔
+          <br>十二年后……⌛
+          <br>2〇22年的八月，我们才堕入爱河💕
+          <br>自此已相爱👇
+        </div>
+        <div class="clock-container">
+          <div class="clock-col">
+            <p class="clock-day clock-timer">
+            </p>
+            <p class="clock-label">
+              天
+            </p>
+          </div>
+          <div class="clock-col">
+            <p class="clock-hours clock-timer">
+            </p>
+            <p class="clock-label">
+              时
+            </p>
+          </div>
+          <div class="clock-col">
+            <p class="clock-minutes clock-timer">
+            </p>
+            <p class="clock-label">
+              分
+            </p>
+          </div>
+          <div class="clock-col">
+            <p class="clock-seconds clock-timer">
+            </p>
+            <p class="clock-label">
+              秒
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- right -->
+    <div class="half-container right">
+
+      <div class="m-picture pic1">
+        <div class="m-picture-box">
+          <img src="./src/1 (Small).jpg" />
+        </div>
+      </div>
+      <div class="m-picture pic2">
+        <div class="m-picture-box">
+          <img src="./src/2 (Small).jpg" />
+        </div>
+      </div>
+      <div class="m-picture pic3">
+        <div class="m-picture-box">
+          <img src="./src/3 (Small).jpg" />
+        </div>
+      </div>
+      <div class="m-picture pic4">
+        <div class="m-picture-box">
+          <img src="./src/4 (Small).jpg" />
+        </div>
+      </div>
+      <div class="m-picture pic5">
+        <div class="m-picture-box">
+          <img src="./src/5 (Small).jpg" />
+        </div>
+      </div>
+      <div class="m-picture pic6">
+        <div class="m-picture-box">
+          <img src="./src/6 (Small).jpg" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- player -->
+  <audio id="bgm" src="./src/bgm.ogg" autoplay loop></audio>
+  <script>
+
+    const START_DATE = new Date('2022-08-08').getTime();
+    const KNOW_DATE = new Date('2010-09-01');
+    let now = new Date();
+    document.addEventListener('DOMContentLoaded', () =>
+      requestAnimationFrame(updateTime)
+    )
+
+    document.getElementsByClassName('loader-enter')[0].addEventListener('click', () => {
+      document.getElementById('loader').style.opacity = 0;
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      },1000)
+      let bgm = document.getElementById('bgm');
+      bgm.volume = 0.1;
+      bgm.play();
+    })
+
+    document.getElementById('know-year').innerText = now.getFullYear() - KNOW_DATE.getFullYear();
+
+    function updateTime() {
+      let now = Date.now();
+      let till = new Date(now - START_DATE);
+      let day = Math.floor(till.getTime() / 1000 / 3600 / 24);
+      document.documentElement.style.setProperty('--timer-day', "'" + day + "'");
+      document.documentElement.style.setProperty('--timer-hours', "'" + till.getHours() + "'");
+      document.documentElement.style.setProperty('--timer-minutes', "'" + till.getMinutes() + "'");
+      document.documentElement.style.setProperty('--timer-seconds', "'" + till.getSeconds() + "'");
+      requestAnimationFrame(updateTime);
+    }
+  </script>
 </body>
+
 </html>
